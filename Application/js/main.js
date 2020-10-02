@@ -42,7 +42,6 @@ function getMovie(){
 
   axios.get('http://www.omdbapi.com?i='+movieId+encodeURI(apiKey))
     .then((response) => {
-      console.log(response);
       let movie = response.data;
 
       let output =`
