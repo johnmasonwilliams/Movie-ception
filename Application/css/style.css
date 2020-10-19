@@ -1,0 +1,22 @@
+#movies img, #movie img{
+  width: 100%;
+}
+
+#navlogo {
+  height: 3em;
+}
+
+#logoname {
+  color: black;
+  font-size: 1.1em;
+}
+
+@media(min-width:992px){ /* This says, if the screen width of the browser is less than 992 pixels, then change the height of below items to their respective values */
+  #movies .col-md-3 .well{
+    height: 390px;
+  }
+
+  #movies .col-md-3 img{
+    height:240px;
+  }
+}
