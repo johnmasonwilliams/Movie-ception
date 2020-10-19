@@ -31,17 +31,17 @@
         </div>
         </div>
     </nav>
-   
+
     <div class="loginbox">
             <h1>Sign Up Here</h1>
             <div class="signup-form">
                 <form action="includes/signup.inc.php" method ="post">
                     <input type="text" name="username" placeholder="Username...">
                     <input type="text" name="email" placeholder="Email...">
-                    <input type="text" name="password" placeholder="Password...">
-                    <input type="text" name="passwordrepeat" placeholder="Repeat Password...">
+                    <input type="password" name="password" placeholder="Password...">
+                    <input type="password" name="passwordrepeat" placeholder="Repeat Password...">
                     <button type="submit" name="submit">Sign Up</button>
-                </form> 
+                </form>
             </div>
     </div>
 </body>
