@@ -1,3 +1,25 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+		header("location: index.html");
+		exit;
+}
+
+
+require_once('connections/bdd.php');
+
+
+$sql = "SELECT id, title, start, end, color FROM events ";
+
+$req = $bdd->prepare($sql);
+$req->execute();
+
+$events = $req->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +46,7 @@
         <a id="logolink" class="navbar-brand" href="index.html">
           <img id="navlogo" src="images/logo.jpg" alt="mclogo">
           <span id="logoname">Movie-ception</span>
-          <li><a href="login.php">Login</a></li>
-          <li><a href="signup.php">Sign Up</a></li>
+          <li><a href="logout.php">Log Out</a></li>
         </a>
       </div>
     </div>

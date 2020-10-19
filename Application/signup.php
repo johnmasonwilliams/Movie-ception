@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+<meta charset="utf-8">
   <title>Movie-ception</title>
 
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
@@ -18,32 +19,30 @@
   <script src="js/main.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <a id="logolink" class="navbar-brand" href="index.html">
-          <img id="navlogo" src="images/logo.jpg" alt="mclogo">
-          <span id="logoname">Movie-ception</span>
-          <li><a href="login.php">Login</a></li>
-          <li><a href="signup.php">Sign Up</a></li>
-        </a>
-      </div>
+    <nav class="navbar navbar-default">
+        <div class="container">
+        <div class="navbar-header">
+            <a id="logolink" class="navbar-brand" href="index.html">
+            <img id="navlogo" src="images/logo.jpg" alt="mclogo">
+            <span id="logoname">Movie-ception</span>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="signup.php">Sign Up</a></li>
+            </a>
+        </div>
+        </div>
+    </nav>
+   
+    <div class="loginbox">
+            <h1>Sign Up Here</h1>
+            <div class="signup-form">
+                <form action="includes/signup.inc.php" method ="post">
+                    <input type="text" name="username" placeholder="Username...">
+                    <input type="text" name="email" placeholder="Email...">
+                    <input type="text" name="password" placeholder="Password...">
+                    <input type="text" name="passwordrepeat" placeholder="Repeat Password...">
+                    <button type="submit" name="submit">Sign Up</button>
+                </form> 
+            </div>
     </div>
-  </nav>
-
-  <hr>
-
-  <div class="container">
-  	<div class="jumbotron">
-    	<h3 class="text-center">Search For Any Movie</h3>
-    	<form id="searchForm">
-    		<input type="text" class="form-control" id="searchText" placeholder="Search Movies...">
-    	</form>
-    </div>
-  </div>
-
-  <div class="container">
-    <div id="movies" class="row"></div>
-  </div>
 </body>
 </html>
