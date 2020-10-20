@@ -1,0 +1,7 @@
+Week 3:
+Start with showing the product
+Show burn down chart and talk about logic behind it
+Show state diagram
+Mention GitHub
+Talk about plans for next customer meeting
+Talk about plans for iteration 2 and see if you have new requirements

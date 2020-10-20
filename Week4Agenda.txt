@@ -1,0 +1,6 @@
+Week 4:
+Start with showing the product
+Show UML use case/sequence diagram
+Make sure our requirements for iteration 2 are in line with what you want
+Show burn down chart
+Show GitHub
