@@ -5,6 +5,7 @@ $(document).ready(() => { // When the document is ready, do the below function
     let searchText = $('#searchText').val(); // Sets 'searchText' to equal the value of whatever is searched
     getMovies(searchText); // Calls the function 'getMovies()' with the parameter of whatever is searched
     e.preventDefault();
+    document.getElementById("searchForm").reset();
   });
 });
 
@@ -18,10 +19,10 @@ function getMovies(searchText) {
                                         //  that 'movies' array is now a 'movie'. Then we can grab values like 'movie.Poster', which is the picture,
                                         //  and 'movie.Title', which is the title of the movie.
         output += `
-          <div class="col-md-3">
+          <div id="movie" class="col-md-3">
             <div class="well text-center">
-              <h5>${movie.Title}</h5>
-              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-primary" href="#"><img onerror="this.onerror=null; this.src='images/no_image.png'" src="${movie.Poster}"></a>
+              <h5 class="movieTitle">${movie.Title}</h5>
+              <a onclick="movieSelected('${movie.imdbID}')" class="btn btn-dark" href="#"><img onerror="this.onerror=null; this.src='images/no_image.png'" src="${movie.Poster}"></a>
             </div>
           </div>
         `;
@@ -56,8 +57,8 @@ function getMovie() { // This function gets the movie information via the sessio
             <img src="${movie.Poster}" class="thumbnail">
           </div>
           <div class="col-md-8">
-            <h2>${movie.Title}</h2>
-            <ul class="list-group">
+            <h2 id="movieTitle">${movie.Title}</h2>
+            <ul id="movieInfo" class="bg-dark list-group">
               <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
               <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
               <li class="list-group-item"><strong>Rated:</strong> ${movie.Rated}</li>
@@ -70,11 +71,11 @@ function getMovie() { // This function gets the movie information via the sessio
         </div>
         <div class="row">
           <div class="well">
-            <h3>Plot</h3>
-            ${movie.Plot}
+            <h3 id="plotLabel">Plot</h3>
+            <p id="moviePlot">${movie.Plot}</p>
             <hr>
             <a href="http://imdb.com/title/${movie.imdbID}" target="_blank" class="btn btn-primary">View IMDB</a>
-            <a href="index.html" class="btn btn-default">Go Back To Search</a>
+            <a href="index.html" class="text-light btn btn-default">Go Back To Search</a>
           </div>
         </div>
       `;
