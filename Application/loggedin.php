@@ -1,7 +1,7 @@
 <?php
 // Initialize the session
 session_start();
- 
+
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 		header("location: index.html");
@@ -59,6 +59,12 @@ $events = $req->fetchAll();
     	<h3 class="text-center">Search For Any Movie</h3>
     	<form id="searchForm">
     		<input type="text" class="form-control" id="searchText" placeholder="Search Movies...">
+        <label>Filter By:</label>
+             <select id = "filter">
+               <option value = "1">Movie Title</option>
+               <option value = "2">Actor</option>
+               <option value = "3">Movie Rating (G-R)</option>
+               <option value = "4">Movie Rating (R-G)</option>
     	</form>
     </div>
   </div>
