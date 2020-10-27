@@ -1,0 +1,68 @@
+body {
+  background-color: rgb(56, 56, 56) !important;
+}
+
+#movies img, #movie img{
+  width: 100%;
+}
+
+#navlogo {
+  height: 3em;
+}
+
+#logoname {
+  color: rgb(201, 201, 201);
+  font-size: 1.1em;
+}
+
+#loginBtn {
+  float:right;
+}
+
+#navBar {
+
+}
+
+#movieTitle {
+  color: rgb(201, 201, 201);
+
+}
+
+#movieInfo {
+  background-color: transparent !important;
+}
+
+#plotLabel {
+  color: rgb(201, 201, 201);
+}
+
+#moviePlot {
+  color: rgb(201, 201, 201);
+}
+
+.movieTitle {
+  height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(201, 201, 201);
+}
+
+#movie {
+  margin-bottom: 0px !important;
+}
+
+@media(min-width:992px){ /* This says, if the screen width of the browser is less than 992 pixels, then change the height of below items to their respective values */
+  #movies .col-md-3 .well{
+    height: 390px;
+  }
+
+  #movies .col-md-3 img{
+    height:240px;
+  }
+
+  #movie {
+    margin-bottom: -75px !important;
+  }
+  
+}
