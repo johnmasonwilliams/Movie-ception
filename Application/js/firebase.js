@@ -44,8 +44,6 @@ function login(){
 
   firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
 
-    window.location.href = "./index.html";
-
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
