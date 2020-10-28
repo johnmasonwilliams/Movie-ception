@@ -75,7 +75,7 @@ function signup() {
 
 function logout(){
   firebase.auth().signOut().then(function() {
-
+    window.location.href = "./index.html";
   }, function(error) {
     console.log(error);
   });
