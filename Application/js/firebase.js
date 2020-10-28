@@ -46,8 +46,6 @@ function login(){
     window.location.href = "./user.html";
   }).catch(function(error) {
 
-    window.location.href = "./index.html";
-
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
