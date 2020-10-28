@@ -85,3 +85,25 @@ function logout(){
     console.log(error);
   });
 }
+
+function passResetFromSignup() {
+  var user = firebase.auth().currentUser;
+  var userEmail = document.getElementById("email_field").value;
+
+  firebase.auth().sendPasswordResetEmail(userEmail).then(function() {
+    alert("Password reset email will been sent to your inbox soon.");
+  }).catch(function(error) {
+    console.log(error);
+  });
+}
+
+function passResetFromUserPage() {
+  var user = firebase.auth().currentUser;
+  var userEmail = user.email;
+
+  firebase.auth().sendPasswordResetEmail(userEmail).then(function() {
+    alert("Password reset email will been sent to your inbox soon.");
+  }).catch(function(error) {
+    console.log(error);
+  });
+}
