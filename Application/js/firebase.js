@@ -53,9 +53,6 @@ function login(){
     window.alert("Error : " + errorMessage);
 
     // ...
-  }).then(function () {
-    window.location.href = "./index.html";
-
   });
 
 }
@@ -73,10 +70,6 @@ function signup() {
     window.alert("Error : " + errorMessage);
 
     // ...
-  })
-  .then(function () {
-    window.location.href = "./index.html";
-
   });
 }
 
