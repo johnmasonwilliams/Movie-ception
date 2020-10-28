@@ -41,8 +41,19 @@
 
   <hr>
 
-  <div class="container">
-    <div id="movie" class="well"></div>
+  <div id="login_div" class="mx-auto col-5">
+    <h2 class="text-light" style="text-align:center;">Login</h2>
+    <div class="form-group">
+      <label class="text-light" for="email_field">Email address</label>
+      <input type="email" class="form-control" id="email_field" aria-describedby="emailHelp">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label class="text-light" for="password_field">Password</label>
+      <input type="password" class="form-control" id="password_field">
+    </div>
+    <button onclick="login()" class="btn btn-primary">Login</button>
+    <a id="signupBtn" href="./signup.html" class="btn btn-secondary" role="button">Signup</a>
   </div>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -68,6 +79,5 @@
   </script>
   <script src="js/firebase.js"></script>
 
-  <script>getMovie();</script>
 </body>
 </html>

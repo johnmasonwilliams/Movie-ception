@@ -42,7 +42,17 @@
   <hr>
 
   <div class="container">
-    <div id="movie" class="well"></div>
+    <div class="well">
+        <div class="row">
+          <div class="mx-auto col-md-8">
+            <ul id="userInfo" class="bg-dark list-group">
+              <li id="userName" class="list-group-item"><strong>Username: </strong></li>
+              <li id="userEmail" class="list-group-item"><strong>Email: </strong></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
   </div>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -67,7 +77,5 @@
     firebase.initializeApp(firebaseConfig);
   </script>
   <script src="js/firebase.js"></script>
-
-  <script>getMovie();</script>
 </body>
 </html>

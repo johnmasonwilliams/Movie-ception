@@ -7,7 +7,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <link rel="manifest" href="images/site.webmanifest">
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -33,7 +32,9 @@
         </a>
       </div>
       <div>
-        <a href="login.php" class="btn btn-secondary" role="button">Login</a>
+        <a href="user.html" class="text-light btn" id="userID"></a>
+        <a id="loginBtn" href="login.html" class="btn btn-secondary" role="button">Login</a>
+        <a id="logoutBtn" onclick="logout()" class="btn btn-secondary" role="button">Logout</a>
       </div>
     </div>
   </nav>
@@ -52,5 +53,28 @@
   <div class="container">
     <div id="movies" class="row"></div>
   </div>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCbRWlPvXWm-ocO_kKNWUoEAh8HulbRQ30",
+      authDomain: "movie-ception.firebaseapp.com",
+      databaseURL: "https://movie-ception.firebaseio.com",
+      projectId: "movie-ception",
+      storageBucket: "movie-ception.appspot.com",
+      messagingSenderId: "629766138888",
+      appId: "1:629766138888:web:8d4cc13cd6cf7de0e2b5bd"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="js/firebase.js"></script>
 </body>
 </html>
