@@ -55,26 +55,42 @@ function movieSelected(id) { // This function is so that we can store the data o
   //TESTER
   //alert("Stored movieID in session storage: " + sessionStorage.getItem('movieId'));
 
-  window.location = 'movie.html'; // This then changes the users webpage to the 'movie.html' page where we load all the movie data.
+  window.location = './movie.html'; // This then changes the users webpage to the 'movie.html' page where we load all the movie data.
   return false;
 }
 
 function getMovie() { // This function gets the movie information via the sessionStorage key that we saved above.
   let movieId = sessionStorage.getItem('movieId'); // Sets 'movidID' as the movidID we stored
-
+  //let favorite = sessionStorage.getItem('isAFavorite');
   //TESTER
   //alert("Retreived movieID from session storage: " + movieId);
 
   axios.get('http://www.omdbapi.com?i='+movieId+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
     .then((response) => { // Same thing as above, once we '.get()', then we run the below code
       let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+      let addDisplay;
+      let removeDisplay;
+
+      // isAFavorite(movieId);
+      //
+      // console.log(favorite);
+      //
+      // if (favorite == "true") {
+      //   addDisplay = `display:none;`;
+      //   removeDisplay = `display:inline;`;
+      // } else {
+      //   addDisplay = `display:inline;`;
+      //   removeDisplay = `display:none;`;
+      // }
+
+
       let output =`
         <div class="row">
           <div class="col-md-4">
             <img src="${movie.Poster}" class="thumbnail">
           </div>
           <div class="col-md-8">
-            <h2 id="movieTitle">${movie.Title}</h2>
+            <h2 id="movieTitle">${movie.Title} <a id="removeFav" style="float:right;" onclick="removeFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Remove Favorite</a><a id="addFav" style="float:right;" onclick="addFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Favorite</a></h2>
             <ul id="movieInfo" class="bg-dark list-group">
               <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
               <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
@@ -103,6 +119,26 @@ function getMovie() { // This function gets the movie information via the sessio
 
       // 'output' is formed using the 'movie' object
       $('#movie').html(output); // then we set the html inside of the div with the id='movie' to 'output' which displays our movie information
+    })
+    .catch((err) => { // '.catch()' to catch any errors and console.log() them
+      console.log(err);
+    });
+}
+
+function getMovieForFavList(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
+
+  //TESTER
+  //alert("Retreived movieID from session storage: " + movieId);
+
+  axios.get('http://www.omdbapi.com?i='+movieId+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+    .then((response) => { // Same thing as above, once we '.get()', then we run the below code
+      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+
+      //TESTER
+      //console.log("Movie to display on screeen");
+      let id = "#favMovie" + i;
+
+      $(id).html(movie.Title);
     })
     .catch((err) => { // '.catch()' to catch any errors and console.log() them
       console.log(err);
