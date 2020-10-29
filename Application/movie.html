@@ -2,12 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MovieInfo</title>
+  <title>Movie-ception</title>
 
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <link rel="manifest" href="images/site.webmanifest">
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -18,13 +17,24 @@
   <script src="js/main.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-default">
+  <div style="float:left;" class="">
+    <img src="images/curtainL.png" alt="">
+  </div>
+  <div style="float:right;" class="">
+    <img src="images/curtainR.png" alt="">
+  </div>
+  <nav id="navBar" class="navbar">
     <div class="container">
       <div class="navbar-header">
         <a id="logolink" class="navbar-brand" href="index.html">
           <img id="navlogo" src="images/logo.jpg" alt="mclogo">
           <span id="logoname">Movie-ception</span>
         </a>
+      </div>
+      <div>
+        <a href="user.html" class="text-light btn" id="userID"></a>
+        <a id="loginBtn" href="login.html" class="btn btn-secondary" role="button">Login</a>
+        <a id="logoutBtn" onclick="logout()" class="btn btn-secondary" role="button">Logout</a>
       </div>
     </div>
   </nav>
@@ -35,6 +45,36 @@
     <div id="movie" class="well"></div>
   </div>
 
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com//firebasejs/8.0.0/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com//firebasejs/8.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com//firebasejs/8.0.0/firebase-firestore.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyCbRWlPvXWm-ocO_kKNWUoEAh8HulbRQ30",
+      authDomain: "movie-ception.firebaseapp.com",
+      databaseURL: "https://movie-ception.firebaseio.com",
+      projectId: "movie-ception",
+      storageBucket: "movie-ception.appspot.com",
+      messagingSenderId: "629766138888",
+      appId: "1:629766138888:web:8d4cc13cd6cf7de0e2b5bd",
+      measurementId: "G-LHPZJBPY28"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  <script src="js/firebase.js"></script>
   <script>getMovie();</script>
+
 </body>
 </html>
