@@ -20,15 +20,25 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if (user != null) {
 
-      var username = user.email;
-      username = username.split("@");
-      document.getElementById("userID").innerHTML = username[0];
 
-      if (window.location.href.indexOf("user") > -1) {
-        document.getElementById("userName").innerHTML = "<strong>Username: </strong>" + username[0];
-        document.getElementById("userEmail").innerHTML = "<strong>Email: </strong>" + user.email;
-        getFavoriteMovies();
-      }
+      firebase.firestore().collection('users').doc(user.uid).get().then(function(doc) {
+          if (doc.exists) {
+              document.getElementById("userID").innerHTML = doc.data().username;
+
+              if (window.location.href.indexOf("user") > -1) {
+                document.getElementById("userName").innerHTML = "<strong>Username: </strong>" +  doc.data().username;
+                document.getElementById("userEmail").innerHTML = "<strong>Email: </strong>" + user.email;
+                getFavoriteMovies();
+              }
+          } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+          }
+      }).catch(function(error) {
+          console.log("Error getting document:", error);
+      });
+
+
 
     }
 
@@ -94,8 +104,15 @@ function signup() {
   var userPass = document.getElementById("password_field").value;
   firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(cred => {
 
+    var uname = cred.user.email;
+    uname = uname.split("@");
+    uname = uname[0];
+
+    console.log(uname);
+
     // write new doc to collection
     firebase.firestore().collection('users').doc(cred.user.uid).set({
+      username: uname,
       useruid: cred.user.uid,
       email: cred.user.email,
       favoriteMovies: []
