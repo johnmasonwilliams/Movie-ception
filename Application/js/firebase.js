@@ -3,37 +3,32 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in.
     sessionStorage.setItem('userUid', user.uid);
 
-    document.getElementById("userID").style.display = "inline";
-    document.getElementById("logoutBtn").style.display = "inline";
-    document.getElementById("loginBtn").style.display = "none";
+    $("#userID").show();
+    $("#logoutBtn").show();
+    $("#loginBtn").hide();
 
     if (window.location.href.indexOf("login") > -1) {
-      document.getElementById("login_div").style.display = "none";
+      $("#login_div").hide();
     }
-
-    // if (window.location.href.indexOf("movie") > -1) {
-    //   document.getElementById("favThisMovie").style.display = "inline";
-    //   document.getElementById("removeMovie").style.display = "none";
-    // }
 
     var user = firebase.auth().currentUser;
 
     if (user != null) {
 
-
       firebase.firestore().collection('users').doc(user.uid).get().then(function(doc) {
           if (doc.exists) {
-              document.getElementById("userID").innerHTML = doc.data().username;
+            $("#userID").html(doc.data().username);
 
-              if (window.location.href.indexOf("user") > -1) {
-                document.getElementById("userName").innerHTML = "<strong>Username: </strong>" +  doc.data().username;
-                document.getElementById("userEmail").innerHTML = "<strong>Email: </strong>" + user.email;
-                getFavoriteMovies();
-              }
+            if (window.location.href.indexOf("user") > -1) {
+              $("#userName").html('<strong>Username: </strong>' +  doc.data().username);
+              $("#userEmail").html('<strong>Email: </strong>' + user.email);
+              getFavoriteMovies();
+            }
           } else {
               // doc.data() will be undefined in this case
               console.log("No such document!");
           }
+
       }).catch(function(error) {
           console.log("Error getting document:", error);
       });
@@ -45,11 +40,12 @@ firebase.auth().onAuthStateChanged(function(user) {
   } else {
     // No user is signed in.
 
-    document.getElementById("userID").style.display = "none";
-    document.getElementById("logoutBtn").style.display = "none";
-    document.getElementById("loginBtn").style.display = "inline";
+    $("#userID").hide();
+    $("#logoutBtn").hide();
+    $("#loginBtn").show();
+
     if (window.location.href.indexOf("login") > -1) {
-      document.getElementById("login_div").style.display = "block";
+      $("#login_div").show();
     }
 
     // if (window.location.href.indexOf("movie") > -1) {
@@ -61,8 +57,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function login(){
 
-  var userEmail = document.getElementById("email_field").value;
-  var userPass = document.getElementById("password_field").value;
+
+
+  var userEmail = $("#email_field").val();
+  var userPass = $("#password_field").val();
 
   firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(cred => {
     window.location.href = "./user.html";
@@ -100,8 +98,9 @@ function loginFromSignup(userEmail, userPass){
 
 function signup() {
 
-  var userEmail = document.getElementById("email_field").value;
-  var userPass = document.getElementById("password_field").value;
+  var userEmail = $("#email_field").val();
+  var userPass = $("#password_field").val();
+
   firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then(cred => {
 
     var uname = cred.user.email;
@@ -145,7 +144,7 @@ function logout(){
 
 function passResetFromSignup() {
   var user = firebase.auth().currentUser;
-  var userEmail = document.getElementById("email_field").value;
+  var userEmail = $("#email_field").val();
 
   firebase.auth().sendPasswordResetEmail(userEmail).then(function() {
     alert("Password reset email will been sent to your inbox soon.");
@@ -185,11 +184,6 @@ function getFavoriteMovies() {
 function addFavorite(movieId) {
 
   var user = firebase.auth().currentUser;
-
-  // document.getElementById("addFav").style.display = "none";
-  // document.getElementById("removeFav").style.display = "inline";
-
-
 
   if (user) {
     var userUid = user.uid;
