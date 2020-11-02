@@ -1,7 +1,9 @@
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-    sessionStorage.setItem('userUid', user.uid);
+    if (sessionStorage.getItem('userUid') != user.uid) {
+      sessionStorage.setItem('userUid', user.uid);
+    }
 
     $("#userID").show();
     $("#logoutBtn").show();
@@ -22,7 +24,6 @@ firebase.auth().onAuthStateChanged(function(user) {
             if (window.location.href.indexOf("user") > -1) {
               $("#userName").html('<strong>Username: </strong>' +  doc.data().username);
               $("#userEmail").html('<strong>Email: </strong>' + user.email);
-              getFavoriteMovies();
             }
           } else {
               // doc.data() will be undefined in this case
@@ -57,8 +58,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function login(){
 
-
-
   var userEmail = $("#email_field").val();
   var userPass = $("#password_field").val();
 
@@ -74,9 +73,6 @@ function login(){
 
     // ...
   });
-
-
-
 }
 
 function loginFromSignup(userEmail, userPass){
@@ -93,7 +89,6 @@ function loginFromSignup(userEmail, userPass){
 
     // ...
   });
-
 }
 
 function signup() {
@@ -167,17 +162,31 @@ function passResetFromUserPage() {
 function getFavoriteMovies() {
 
   var user = firebase.auth().currentUser;
-  var userUid = user.uid;
+  var userUid = sessionStorage.getItem('userUid')
 
   firebase.firestore().collection('users').doc(userUid).onSnapshot(doc => {
 
     const data = doc.data();
 
-    for (let i = 0; i < data.favoriteMovies.length; i++) {
-      $('#favMovies').append(`<a onclick="movieSelected('` + data.favoriteMovies[i] + `')" class="btn btn-dark" href="#"><li id="favMovie` + i + `" class="list-group-item text-dark"></li></a>`);
-      getMovieForFavList(data.favoriteMovies[i], i);
-    }
+    $('#favMovies').html('');
 
+    for (let i = 0; i < data.favoriteMovies.length; i++) {
+
+      getMovieForFavList(data.favoriteMovies[i], i);
+      getPosterForFavList(data.favoriteMovies[i], i);
+
+
+
+      $('#favMovies').append(`
+
+        <div id="movie" style="margin-bottom: 0px !important;" class="col-md-3">
+          <div class="well text-center">
+            <h5 id="favMovie` + i + `" class="movieTitle"></h5>
+            <a onclick="movieSelected('` + data.favoriteMovies[i] + `')" class="btn btn-dark" href="#"><img  id="favMoviePoster` + i + `" onerror="this.onerror=null; this.src='images/no_image.png'"></a>
+          </div>
+        </div>
+        `);
+    }
   })
 }
 
@@ -201,9 +210,6 @@ function removeFavorite(movieId) {
 
   var user = firebase.auth().currentUser;
 
-  // document.getElementById("addFav").style.display = "inline";
-  // document.getElementById("removeFav").style.display = "none";
-
   if (user) {
     var userUid = user.uid;
 
@@ -218,24 +224,26 @@ function removeFavorite(movieId) {
 
 function isAFavorite(movieId) {
 
-  //let userUid = sessionStorage.getItem('userUid');
+  var user = firebase.auth().currentUser;
+  var userUid = user.uid;
 
-  firebase.firestore().collection('users').doc(userUid).get().then(function(doc) {
+  if (user) {
+    var userUid = user.uid;
 
-    const data = doc.data();
+    firebase.firestore().collection('users').doc(userUid).get().then(function(doc) {
 
-    for (let i = 0; i < data.favoriteMovies.length; i++) {
-      if (movieId == data.favoriteMovies[i]) {
+      const data = doc.data();
 
-
-        break;
-      } else {
-
+      for (let i = 0; i < data.favoriteMovies.length; i++) {
+        if (movieId == data.favoriteMovies[i]) {
+          return true;
+        }
       }
-    }
+      return false;
 
-  }).catch(function(error) {
-      console.log("Error getting document:", error);
-  });
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
 
+  }
 }

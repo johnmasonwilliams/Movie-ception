@@ -77,7 +77,10 @@ function getMovie() { // This function gets the movie information via the sessio
             <img src="${movie.Poster}" class="thumbnail">
           </div>
           <div class="col-md-8">
-            <h2 id="movieTitle">${movie.Title} <a id="removeFav" style="float:right;" onclick="removeFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Remove Favorite</a><a id="addFav" style="float:right;" onclick="addFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Favorite</a></h2>
+            <h2 id="movieTitle">${movie.Title}
+            <a id="removeFav" style="float:right;" onclick="removeFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Remove Favorite</a>
+            <a id="addFav" style="float:right;" onclick="addFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Favorite</a></h2>
+
             <ul id="movieInfo" class="bg-dark list-group">
               <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
               <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
@@ -126,6 +129,26 @@ function getMovieForFavList(movieId, i) { // This function gets the movie inform
       let id = "#favMovie" + i;
 
       $(id).html(movie.Title);
+    })
+    .catch((err) => { // '.catch()' to catch any errors and console.log() them
+      console.log(err);
+    });
+}
+
+function getPosterForFavList(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
+
+  //TESTER
+  //alert("Retreived movieID from session storage: " + movieId);
+
+  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+    .then((response) => { // Same thing as above, once we '.get()', then we run the below code
+      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+
+      //TESTER
+      //console.log("Movie to display on screeen");
+      let id = "#favMoviePoster" + i;
+
+      $(id).attr('src', movie.Poster);
     })
     .catch((err) => { // '.catch()' to catch any errors and console.log() them
       console.log(err);
