@@ -17,7 +17,11 @@ function getMovies(searchText) {
 
   if (selectVal == 'Any') {
     selectVal = '';
+  } else {
+    selectVal = "&" + "type=" + selectVal;
   }
+
+  alert('http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey)+selectVal);
 
   axios.get('http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey)+"&"+"type="+selectVal) // I used axios which is promise based and super easy to use to 'get()' the API response.
     .then((response) => { // '.then()' is basically saying, once you get the response above, then. We can also use 'response' which is the JSON that
