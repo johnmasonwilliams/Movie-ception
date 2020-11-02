@@ -14,17 +14,8 @@ $(document).ready(() => { // When the document is ready, do the below function
 
 function getMovies(searchText) {
   let selectVal = $( "#searchBy option:selected" ).val();
-  let searchURL = '';
 
-  if (selectVal == 'any') {
-    searchURL = 'http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey);
-  } else {
-    searchURL = 'http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey) + "&type=" + selectVal;
-  }
-
-  console.log(searchURL);
-
-  axios.get(searchURL) // I used axios which is promise based and super easy to use to 'get()' the API response.
+  axios.get('http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey)+"&type="+selectVal) // I used axios which is promise based and super easy to use to 'get()' the API response.
     .then((response) => { // '.then()' is basically saying, once you get the response above, then. We can also use 'response' which is the JSON that
                           // is returned by the '.get()' on the above line
       let movies = response.data.Search; // This sets 'movies' to the array of movies that are returned by the '.get()'
