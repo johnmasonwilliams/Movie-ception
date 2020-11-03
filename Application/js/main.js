@@ -42,7 +42,6 @@ function getMovies(searchText) {
       });
 
 
-
       $('#movies').html(output); // Then we set the html inside the div that has the id='movies' to equal 'output' so that we can display our list of movies
     })
     .catch((err) => { // If something goes wrong in the '.get()', it will run this '.catch()' which displays the error
@@ -155,4 +154,29 @@ function getPosterForFavList(movieId, i) { // This function gets the movie infor
     .catch((err) => { // '.catch()' to catch any errors and console.log() them
       console.log(err);
     });
+}
+
+function getMovieGenre(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
+
+  //TESTER
+  //alert("Retreived movieID from session storage: " + movieId);
+
+  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+    .then(function(response) { // Same thing as above, once we '.get()', then we run the below code
+      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+
+      //TESTER
+      //console.log("Movie to display on screeen");
+      let key = 'movieGenre'+i;
+
+      sessionStorage.setItem(key, movie.Genre);
+    })
+    .catch((err) => { // '.catch()' to catch any errors and console.log() them
+      console.log(err);
+    });
+}
+
+function pageTester() {
+  getNextPage();
+  getPreviousPage();
 }

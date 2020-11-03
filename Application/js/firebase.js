@@ -247,3 +247,22 @@ function isAFavorite(movieId) {
 
   }
 }
+
+function getFavoriteMoviesTest() {
+
+  var user = firebase.auth().currentUser;
+  var userUid = sessionStorage.getItem('userUid')
+
+  firebase.firestore().collection('users').doc(userUid).onSnapshot(doc => {
+
+    const data = doc.data();
+
+    for (let i = 0; i < data.favoriteMovies.length; i++) {
+
+      let key = 'favoriteMovies'+i;
+      sessionStorage.setItem(key, data.favoriteMovies[i]);
+
+    }
+
+  })
+}
