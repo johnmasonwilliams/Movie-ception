@@ -1,11 +1,11 @@
-let apiKey = '&apikey=ee1abab3'; // This is our API key which you can think of like our key to unlock the door to access OMDB's API.
+let apiKey = 'apikey=ee1abab3'; // This is our API key which you can think of like our key to unlock the door to access OMDB's API.
 
 $(document).ready(() => { // When the document is ready, do the below function
   $('#searchForm').on('submit', (e) => { // On the form submission, which is just when you search for something
     let searchText = $('#searchText').val(); // Sets 'searchText' to equal the value of whatever is searched
     getMovies(searchText); // Calls the function 'getMovies()' with the parameter of whatever is searched
     e.preventDefault();
-    document.getElementById("searchForm").reset();
+    $('#searchText').val('');
 
     //TESTER
     //console.log("Form submited successfully.");
@@ -13,7 +13,9 @@ $(document).ready(() => { // When the document is ready, do the below function
 });
 
 function getMovies(searchText) {
-  axios.get('http://www.omdbapi.com?s='+searchText+encodeURI(apiKey)) // I used axios which is promise based and super easy to use to 'get()' the API response.
+  let selectVal = $( "#searchBy option:selected" ).val();
+
+  axios.get('http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey)+"&type="+selectVal) // I used axios which is promise based and super easy to use to 'get()' the API response.
     .then((response) => { // '.then()' is basically saying, once you get the response above, then. We can also use 'response' which is the JSON that
                           // is returned by the '.get()' on the above line
       let movies = response.data.Search; // This sets 'movies' to the array of movies that are returned by the '.get()'
@@ -38,6 +40,7 @@ function getMovies(searchText) {
         //console.log((index + 1) + ") " + movie.Title);
 
       });
+
 
       $('#movies').html(output); // Then we set the html inside the div that has the id='movies' to equal 'output' so that we can display our list of movies
     })
@@ -65,24 +68,9 @@ function getMovie() { // This function gets the movie information via the sessio
   //TESTER
   //alert("Retreived movieID from session storage: " + movieId);
 
-  axios.get('http://www.omdbapi.com?i='+movieId+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
     .then((response) => { // Same thing as above, once we '.get()', then we run the below code
       let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
-      let addDisplay;
-      let removeDisplay;
-
-      // isAFavorite(movieId);
-      //
-      // console.log(favorite);
-      //
-      // if (favorite == "true") {
-      //   addDisplay = `display:none;`;
-      //   removeDisplay = `display:inline;`;
-      // } else {
-      //   addDisplay = `display:inline;`;
-      //   removeDisplay = `display:none;`;
-      // }
-
 
       let output =`
         <div class="row">
@@ -90,7 +78,10 @@ function getMovie() { // This function gets the movie information via the sessio
             <img src="${movie.Poster}" class="thumbnail">
           </div>
           <div class="col-md-8">
-            <h2 id="movieTitle">${movie.Title} <a id="removeFav" style="float:right;" onclick="removeFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Remove Favorite</a><a id="addFav" style="float:right;" onclick="addFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Favorite</a></h2>
+            <h2 id="movieTitle">${movie.Title}
+            <a id="removeFav" style="float:right;" onclick="removeFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Remove Favorite</a>
+            <a id="addFav" style="float:right;" onclick="addFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Favorite</a></h2>
+
             <ul id="movieInfo" class="bg-dark list-group">
               <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
               <li class="list-group-item"><strong>Released:</strong> ${movie.Released}</li>
@@ -130,7 +121,7 @@ function getMovieForFavList(movieId, i) { // This function gets the movie inform
   //TESTER
   //alert("Retreived movieID from session storage: " + movieId);
 
-  axios.get('http://www.omdbapi.com?i='+movieId+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
     .then((response) => { // Same thing as above, once we '.get()', then we run the below code
       let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
 
@@ -143,4 +134,49 @@ function getMovieForFavList(movieId, i) { // This function gets the movie inform
     .catch((err) => { // '.catch()' to catch any errors and console.log() them
       console.log(err);
     });
+}
+
+function getPosterForFavList(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
+
+  //TESTER
+  //alert("Retreived movieID from session storage: " + movieId);
+
+  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+    .then((response) => { // Same thing as above, once we '.get()', then we run the below code
+      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+
+      //TESTER
+      //console.log("Movie to display on screeen");
+      let id = "#favMoviePoster" + i;
+
+      $(id).attr('src', movie.Poster);
+    })
+    .catch((err) => { // '.catch()' to catch any errors and console.log() them
+      console.log(err);
+    });
+}
+
+function getMovieGenre(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
+
+  //TESTER
+  //alert("Retreived movieID from session storage: " + movieId);
+
+  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+    .then(function(response) { // Same thing as above, once we '.get()', then we run the below code
+      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+
+      //TESTER
+      //console.log("Movie to display on screeen");
+      let key = 'movieGenre'+i;
+
+      sessionStorage.setItem(key, movie.Genre);
+    })
+    .catch((err) => { // '.catch()' to catch any errors and console.log() them
+      console.log(err);
+    });
+}
+
+function pageTester() {
+  getNextPage();
+  getPreviousPage();
 }
