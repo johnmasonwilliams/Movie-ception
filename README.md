@@ -34,7 +34,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/masonwilliams6/movie-ception">
-    <img src="images/logo.jpg" alt="Logo" width="80" height="80">
+    <img src="Application/images/logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Movie-ception</h3>
@@ -75,7 +75,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](http://ceclnx01.cec.miamioh.edu/~will1129/movie-ception/master/)
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
@@ -189,4 +189,4 @@ Project Link: [https://github.com/masonwilliams6/movie-ception](https://github.c
 [issues-url]: https://github.com/masonwilliams6/Movie-ception/issues
 [license-shield]: https://img.shields.io/github/license/masonwilliams6/Movie-ception.svg?style=flat-square
 [license-url]: https://github.com/masonwilliams6/Movie-ception.svg/blob/master/LICENSE.txt
-[product-screenshot]: https://github.com/masonwilliams6/Movie-ception/tree/firebase-v4/Application/images/logo.png
+[product-screenshot]: Application/images/logo.jpg
