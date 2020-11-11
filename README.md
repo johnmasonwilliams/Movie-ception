@@ -41,12 +41,12 @@
   <h3 align="center">YOUR_TITLE</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
+    Movie-ception
     <br />
     <a href="https://github.com/masonwilliams6/movie-ception"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/masonwilliams6/movie-ception">View Demo</a>
+    <a href="http://ceclnx01.cec.miamioh.edu/~will1129/movie-ception/master/">View Demo</a>
     ·
     <a href="https://github.com/masonwilliams6/movie-ception/issues">Report Bug</a>
     ·
