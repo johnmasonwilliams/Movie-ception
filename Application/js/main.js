@@ -37,7 +37,7 @@ function getMovies(searchText) {
         // Through this for each loop, 'output' is concatenated to build to grid of movies to be display on the html page
 
         //TESTER
-        //console.log((index + 1) + ") " + movie.Title);
+        console.log((index + 1) + ") " + movie.Title + '\nImg src = "' + movie.Poster + '"');
 
       });
 

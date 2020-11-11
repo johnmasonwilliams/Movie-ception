@@ -22,7 +22,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             $("#userID").html(doc.data().username);
 
             if (window.location.href.indexOf("user") > -1) {
+              console.log('Username: ' +  doc.data().username);
               $("#userName").html('<strong>Username: </strong>' +  doc.data().username);
+              console.log('Email: ' + user.email);
               $("#userEmail").html('<strong>Email: </strong>' + user.email);
             }
           } else {
@@ -201,6 +203,8 @@ function addFavorite(movieId) {
         favoriteMovies: firebase.firestore.FieldValue.arrayUnion(movieId)
     });
 
+    console.log("Added " + movieId + " as favorite");
+
   } else {
     window.location.href = "./login.html";
   }
@@ -216,6 +220,8 @@ function removeFavorite(movieId) {
     firebase.firestore().collection('users').doc(userUid).update({
         favoriteMovies: firebase.firestore.FieldValue.arrayRemove(movieId)
     });
+
+    console.log("Removed " + movieId + " as favorite");
 
   } else {
     window.location.href = "./login.html";
