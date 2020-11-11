@@ -35,13 +35,13 @@
 <br />
 <p align="center">
   <a href="https://github.com/masonwilliams6/movie-ception">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/masonwilliams6/Movie-ception/tree/firebase-v4/Application/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">YOUR_TITLE</h3>
+  <h3 align="center">Movie-ception</h3>
 
   <p align="center">
-    Movie-ception
+    Project for CSE 201
     <br />
     <a href="https://github.com/masonwilliams6/movie-ception"><strong>Explore the docs »</strong></a>
     <br />
@@ -156,7 +156,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - will1129@miamioh.edu
+Mason Williams - will1129@miamioh.edu
+Eli Wright - wrigh242@miamioh.edu
+Nathan Trimm - timmna@miamioh.edu
+Aaron Passalacqua - passalam@miamioh.edu
+Dylan Higgins - higgindw@miamioh.edu
+
 
 Project Link: [https://github.com/masonwilliams6/movie-ception](https://github.com/masonwilliams6/movie-ception)
 
@@ -185,4 +190,4 @@ Project Link: [https://github.com/masonwilliams6/movie-ception](https://github.c
 [issues-url]: https://github.com/masonwilliams6/Movie-ception/issues
 [license-shield]: https://img.shields.io/github/license/masonwilliams6/Movie-ception.svg?style=flat-square
 [license-url]: https://github.com/masonwilliams6/Movie-ception.svg/blob/master/LICENSE.txt
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: https://github.com/masonwilliams6/Movie-ception/tree/firebase-v4/Application/images/logo.png
