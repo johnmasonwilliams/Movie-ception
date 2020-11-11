@@ -35,7 +35,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/masonwilliams6/movie-ception">
-    <img src="https://github.com/masonwilliams6/Movie-ception/tree/firebase-v4/Application/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Movie-ception</h3>
