@@ -26,7 +26,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 
 
 
@@ -66,9 +65,7 @@
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
-* [License](#license)
 * [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
 
 
 
@@ -77,16 +74,13 @@
 
 [![Product Name Screen Shot][product-screenshot]](http://ceclnx01.cec.miamioh.edu/~will1129/movie-ception/master/)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`
-
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [Axios](https://www.npmjs.com/package/axios)
+* [Bootstrap](https://getbootstrap.com/)
+* [Firebase](https://firebase.google.com/)
+* [JQuery](https://jquery.com/)
 
 
 
@@ -95,40 +89,19 @@ Here's a blank template to get started:
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
-
-### Installation
-
-1. Clone the repo
-```sh
-git clone https://github.com/masonwilliams6/movie-ception.git
-```
-2. Install NPM packages
-```sh
-npm install
-```
-
-
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+- Use Movie-ception to search any show or movie by keyword.
+- Add your favorite shows and movies to your favorites list to get recommendations
 
 
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/masonwilliams6/movie-ception/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/masonwilliams6/movie-ception/issues) for a list of proposed features (and known issues).  
+Also see our [Trello board](https://trello.com/b/JArc8qQU/movie-ception) for upcoming features.
 
 
 
@@ -144,37 +117,17 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Mason Williams - will1129@miamioh.edu
-Eli Wright - wrigh242@miamioh.edu
-Nathan Trimm - timmna@miamioh.edu
-Aaron Passalacqua - passalam@miamioh.edu
-Dylan Higgins - higgindw@miamioh.edu
+Mason Williams - will1129@miamioh.edu  
+Eli Wright - wrigh242@miamioh.edu  
+Nathan Trimm - timmna@miamioh.edu  
+Aaron Passalacqua - passalam@miamioh.edu  
+Dylan Higgins - higgindw@miamioh.edu  
 
 
 Project Link: [https://github.com/masonwilliams6/movie-ception](https://github.com/masonwilliams6/movie-ception)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -183,10 +136,12 @@ Project Link: [https://github.com/masonwilliams6/movie-ception](https://github.c
 [contributors-url]: https://github.com/masonwilliams6/Movie-ception/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/masonwilliams6/Movie-ception.svg?style=flat-square
 [forks-url]: https://github.com/masonwilliams6/Movie-ception/network/members
-[stars-shield]: https://img.shields.io/github/stars/masonwilliams6/repo.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/masonwilliams6/Movie-ception.svg?style=flat-square
 [stars-url]: https://github.com/masonwilliams6/Movie-ception/stargazers
 [issues-shield]: https://img.shields.io/github/issues/masonwilliams6/Movie-ception.svg?style=flat-square
 [issues-url]: https://github.com/masonwilliams6/Movie-ception/issues
 [license-shield]: https://img.shields.io/github/license/masonwilliams6/Movie-ception.svg?style=flat-square
 [license-url]: https://github.com/masonwilliams6/Movie-ception.svg/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/github_username
 [product-screenshot]: Application/images/logo.jpg
