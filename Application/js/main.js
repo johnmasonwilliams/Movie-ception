@@ -128,6 +128,46 @@ function getMovie() { // This function gets the movie information via the sessio
     });
 }
 
+function getMovieForRecList(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
+
+  //TESTER
+  //alert("Retreived movieID from session storage: " + movieId);
+
+  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+    .then((response) => { // Same thing as above, once we '.get()', then we run the below code
+      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+
+      //TESTER
+      //console.log("Movie to display on screeen");
+      let id = "#recMovie" + i;
+
+      $(id).html(movie.Title);
+    })
+    .catch((err) => { // '.catch()' to catch any errors and console.log() them
+      console.log(err);
+    });
+}
+
+function getPosterForRecList(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
+
+  //TESTER
+  //alert("Retreived movieID from session storage: " + movieId);
+
+  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+    .then((response) => { // Same thing as above, once we '.get()', then we run the below code
+      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+
+      //TESTER
+      //console.log("Movie to display on screeen");
+      let id = "#recMoviePoster" + i;
+
+      $(id).attr('src', movie.Poster);
+    })
+    .catch((err) => { // '.catch()' to catch any errors and console.log() them
+      console.log(err);
+    });
+}
+
 function getMovieForFavList(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
 
   //TESTER
@@ -168,25 +208,7 @@ function getPosterForFavList(movieId, i) { // This function gets the movie infor
     });
 }
 
-function getMovieGenre(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
 
-  //TESTER
-  //alert("Retreived movieID from session storage: " + movieId);
-
-  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
-    .then(function(response) { // Same thing as above, once we '.get()', then we run the below code
-      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
-
-      //TESTER
-      //console.log("Movie to display on screeen");
-      let key = 'movieGenre'+i;
-
-      sessionStorage.setItem(key, movie.Genre);
-    })
-    .catch((err) => { // '.catch()' to catch any errors and console.log() them
-      console.log(err);
-    });
-}
 
 function getNextPage() {
   let page = sessionStorage.getItem('pageNum');

@@ -61,6 +61,15 @@
 
         <div class="row">
           <div class="col-md-10 offset-md-1 container">
+            <h3 class="text-light">Recommend <span id="favGenre"></span> Movies</h4>
+            <div id="recMovies" class=" row"></div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-10 offset-md-1 container">
             <h3 class="text-light">Favorites</h4>
             <div id="favMovies" class=" row"></div>
           </div>
@@ -101,7 +110,7 @@
     firebase.analytics();
   </script>
   <script src="js/firebase.js"></script>
-  <script>getFavoriteMovies();</script>
+  <script>getFavoriteMovies();getMovieGenre();</script>
 
 
 </body>
