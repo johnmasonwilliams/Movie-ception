@@ -51,6 +51,11 @@ firebase.auth().onAuthStateChanged(function(user) {
       $("#login_div").show();
     }
 
+    if (window.location.href.indexOf("movie") > -1) {
+      $("#addFav").hide();
+      $("#removeFav").hide();
+    }
+
     // if (window.location.href.indexOf("movie") > -1) {
     //   document.getElementById("addFav").style.display = "none";
     //   document.getElementById("removeFav").style.display = "inline";
@@ -134,6 +139,7 @@ function signup() {
 function logout(){
   firebase.auth().signOut().then(function() {
     window.location.href = "./index.html";
+    sessionStorage.removeItem('userUid');
   }, function(error) {
     console.log(error);
   });
@@ -205,6 +211,8 @@ function addFavorite(movieId) {
 
     console.log("Added " + movieId + " as favorite");
 
+    $('removeFav').show();
+
   } else {
     window.location.href = "./login.html";
   }
@@ -230,11 +238,11 @@ function removeFavorite(movieId) {
 
 function isAFavorite(movieId) {
 
-  var user = firebase.auth().currentUser;
-  var userUid = user.uid;
+  $('#removeFav').hide();
+  $('#addFav').hide();
 
-  if (user) {
-    var userUid = user.uid;
+  if (sessionStorage.getItem('userUid')) {
+    var userUid = sessionStorage.getItem('userUid');
 
     firebase.firestore().collection('users').doc(userUid).get().then(function(doc) {
 
@@ -242,9 +250,18 @@ function isAFavorite(movieId) {
 
       for (let i = 0; i < data.favoriteMovies.length; i++) {
         if (movieId == data.favoriteMovies[i]) {
+          $('#removeFav').show();
+          console.log('fav');
+
+
+
           return true;
         }
       }
+      console.log('notfav');
+
+      $('#addFav').show();
+
       return false;
 
     }).catch(function(error) {

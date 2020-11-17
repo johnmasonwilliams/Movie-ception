@@ -79,8 +79,11 @@ function getMovie() { // This function gets the movie information via the sessio
           </div>
           <div class="col-md-8">
             <h2 id="movieTitle">${movie.Title}
-            <a id="removeFav" style="float:right;" onclick="removeFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Remove Favorite</a>
-            <a id="addFav" style="float:right;" onclick="addFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Favorite</a></h2>
+
+            <a onclick="removeFavorite('` + movieId + `');$('#addFav').show();$('#removeFav').hide();" class="btn" id="removeFav" style="color:white;"><i id="heart" class="fa fa-heart" style="font-size:24px;color:red;"></i><br>Un-Favorite</a>
+            <a onclick="addFavorite('` + movieId + `');$('#removeFav').show();$('#addFav').hide();" class="btn" id="addFav" style="color:white;"><i id="heart" class="fa fa-heart" style="font-size:24px;"></i><br>Favorite</a>
+
+            </h2>
 
             <ul id="movieInfo" class="bg-dark list-group">
               <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
@@ -110,6 +113,7 @@ function getMovie() { // This function gets the movie information via the sessio
 
       // 'output' is formed using the 'movie' object
       $('#movie').html(output); // then we set the html inside of the div with the id='movie' to 'output' which displays our movie information
+      isAFavorite(movieId);
     })
     .catch((err) => { // '.catch()' to catch any errors and console.log() them
       console.log(err);
