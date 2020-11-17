@@ -24,9 +24,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             $("#userID").html(doc.data().username);
 
             if (window.location.href.indexOf("user") > -1) {
-              console.log('Username: ' +  doc.data().username);
+              //console.log('Username: ' +  doc.data().username);
               $("#userName").html('<strong>Username: </strong>' +  doc.data().username);
-              console.log('Email: ' + user.email);
+              //console.log('Email: ' + user.email);
               $("#userEmail").html('<strong>Email: </strong>' + user.email);
             }
           } else {
@@ -111,7 +111,7 @@ function signup() {
     uname = uname.split("@");
     uname = uname[0];
 
-    console.log(uname);
+    //console.log(uname);
 
     // write new doc to collection
     firebase.firestore().collection('users').doc(cred.user.uid).set({
@@ -211,7 +211,7 @@ function addFavorite(movieId) {
         favoriteMovies: firebase.firestore.FieldValue.arrayUnion(movieId)
     });
 
-    console.log("Added " + movieId + " as favorite");
+    //console.log("Added " + movieId + " as favorite");
 
     $('removeFav').show();
 
@@ -231,7 +231,7 @@ function removeFavorite(movieId) {
         favoriteMovies: firebase.firestore.FieldValue.arrayRemove(movieId)
     });
 
-    console.log("Removed " + movieId + " as favorite");
+    //console.log("Removed " + movieId + " as favorite");
 
   } else {
     window.location.href = "./login.html";
@@ -253,7 +253,7 @@ function isAFavorite(movieId) {
       for (let i = 0; i < data.favoriteMovies.length; i++) {
         if (movieId == data.favoriteMovies[i]) {
           $('#removeFav').show();
-          console.log('fav');
+          //console.log('fav');
 
 
 
@@ -329,7 +329,7 @@ function getMovieGenre() { // This function gets the movie information via the s
           map.forEach(getMax);
         })
         .then(() => {
-          console.log("MAX: " + sessionStorage.getItem('maxGenre'));
+          //console.log("MAX: " + sessionStorage.getItem('maxGenre'));
 
           maxGenre = sessionStorage.getItem('maxGenre');
 
@@ -381,7 +381,7 @@ function getGenreMovies(genre) {
 
 function getMax(value, key, map) {
 
-  console.log(`${key} = ${value}`);
+  //console.log(`${key} = ${value}`);
 
   if (!sessionStorage.getItem('max')) {
     //console.log('new');

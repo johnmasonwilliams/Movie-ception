@@ -21,7 +21,7 @@ $(document).ready(() => { // When the document is ready, do the below function
 });
 
 function getMovies(searchText) {
-console.log('http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey));
+  //console.log('http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey));
   axios.get('http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey)) // I used axios which is promise based and super easy to use to 'get()' the API response.
     .then((response) => { // '.then()' is basically saying, once you get the response above, then. We can also use 'response' which is the JSON that
                           // is returned by the '.get()' on the above line
