@@ -1,21 +1,28 @@
 let apiKey = 'apikey=ee1abab3'; // This is our API key which you can think of like our key to unlock the door to access OMDB's API.
 
+
 $(document).ready(() => { // When the document is ready, do the below function
   $('#searchForm').on('submit', (e) => { // On the form submission, which is just when you search for something
     let searchText = $('#searchText').val(); // Sets 'searchText' to equal the value of whatever is searched
-    getMovies(searchText); // Calls the function 'getMovies()' with the parameter of whatever is searched
+    sessionStorage.setItem('searchText', $('#searchText').val());
+
+    let selectVal = $( "#searchBy option:selected" ).val();
+    sessionStorage.setItem('selectVal', $( "#searchBy option:selected" ).val());
+
+    let search = searchText + "&type=" + selectVal;
+
+    sessionStorage.setItem('pageNum', 1);
+    getMovies(search); // Calls the function 'getMovies()' with the parameter of whatever is searched
     e.preventDefault();
     $('#searchText').val('');
-
     //TESTER
     //console.log("Form submited successfully.");
   });
 });
 
 function getMovies(searchText) {
-  let selectVal = $( "#searchBy option:selected" ).val();
-
-  axios.get('http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey)+"&type="+selectVal) // I used axios which is promise based and super easy to use to 'get()' the API response.
+  //console.log('http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey));
+  axios.get('http://www.omdbapi.com?s='+searchText+"&"+encodeURI(apiKey)) // I used axios which is promise based and super easy to use to 'get()' the API response.
     .then((response) => { // '.then()' is basically saying, once you get the response above, then. We can also use 'response' which is the JSON that
                           // is returned by the '.get()' on the above line
       let movies = response.data.Search; // This sets 'movies' to the array of movies that are returned by the '.get()'
@@ -37,12 +44,13 @@ function getMovies(searchText) {
         // Through this for each loop, 'output' is concatenated to build to grid of movies to be display on the html page
 
         //TESTER
-        //console.log((index + 1) + ") " + movie.Title);
+        //console.log((index + 1) + ") " + movie.Title + '\nImg src = "' + movie.Poster + '"');
 
       });
 
 
       $('#movies').html(output); // Then we set the html inside the div that has the id='movies' to equal 'output' so that we can display our list of movies
+      $('#pageRow').show();
     })
     .catch((err) => { // If something goes wrong in the '.get()', it will run this '.catch()' which displays the error
       console.log(err);
@@ -79,8 +87,11 @@ function getMovie() { // This function gets the movie information via the sessio
           </div>
           <div class="col-md-8">
             <h2 id="movieTitle">${movie.Title}
-            <a id="removeFav" style="float:right;" onclick="removeFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Remove Favorite</a>
-            <a id="addFav" style="float:right;" onclick="addFavorite('` + movieId + `')" target="_blank" class="btn btn-primary">Favorite</a></h2>
+
+            <a onclick="removeFavorite('` + movieId + `');$('#addFav').show();$('#removeFav').hide();" class="btn" id="removeFav" style="color:white;"><i id="heart" class="fa fa-heart" style="font-size:24px;color:red;"></i><br>Un-Favorite</a>
+            <a onclick="addFavorite('` + movieId + `');$('#removeFav').show();$('#addFav').hide();" class="btn" id="addFav" style="color:white;"><i id="heart" class="fa fa-heart" style="font-size:24px;"></i><br>Favorite</a>
+
+            </h2>
 
             <ul id="movieInfo" class="bg-dark list-group">
               <li class="list-group-item"><strong>Genre:</strong> ${movie.Genre}</li>
@@ -110,6 +121,47 @@ function getMovie() { // This function gets the movie information via the sessio
 
       // 'output' is formed using the 'movie' object
       $('#movie').html(output); // then we set the html inside of the div with the id='movie' to 'output' which displays our movie information
+      isAFavorite(movieId);
+    })
+    .catch((err) => { // '.catch()' to catch any errors and console.log() them
+      console.log(err);
+    });
+}
+
+function getMovieForRecList(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
+
+  //TESTER
+  //alert("Retreived movieID from session storage: " + movieId);
+
+  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+    .then((response) => { // Same thing as above, once we '.get()', then we run the below code
+      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+
+      //TESTER
+      //console.log("Movie to display on screeen");
+      let id = "#recMovie" + i;
+
+      $(id).html(movie.Title);
+    })
+    .catch((err) => { // '.catch()' to catch any errors and console.log() them
+      console.log(err);
+    });
+}
+
+function getPosterForRecList(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
+
+  //TESTER
+  //alert("Retreived movieID from session storage: " + movieId);
+
+  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
+    .then((response) => { // Same thing as above, once we '.get()', then we run the below code
+      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+
+      //TESTER
+      //console.log("Movie to display on screeen");
+      let id = "#recMoviePoster" + i;
+
+      $(id).attr('src', movie.Poster);
     })
     .catch((err) => { // '.catch()' to catch any errors and console.log() them
       console.log(err);
@@ -156,27 +208,32 @@ function getPosterForFavList(movieId, i) { // This function gets the movie infor
     });
 }
 
-function getMovieGenre(movieId, i) { // This function gets the movie information via the sessionStorage key that we saved above.
 
-  //TESTER
-  //alert("Retreived movieID from session storage: " + movieId);
 
-  axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
-    .then(function(response) { // Same thing as above, once we '.get()', then we run the below code
-      let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
-
-      //TESTER
-      //console.log("Movie to display on screeen");
-      let key = 'movieGenre'+i;
-
-      sessionStorage.setItem(key, movie.Genre);
-    })
-    .catch((err) => { // '.catch()' to catch any errors and console.log() them
-      console.log(err);
-    });
+function getNextPage() {
+  let page = sessionStorage.getItem('pageNum');
+  page = parseInt(page, 10);
+  if (page <= 100) {
+    let searchText = sessionStorage.getItem('searchText'); // Sets 'searchText' to equal the value of whatever is searched
+    let selectVal = sessionStorage.getItem('selectVal');
+    page += 1;
+    sessionStorage.setItem('pageNum', page);
+    let search = searchText + "&type=" + selectVal + "&page=" + page;
+    getMovies(search); // Calls the function 'getMovies()' with the parameter of whatever is searched
+    $('#activePageNum').html(page);
+  }
 }
 
-function pageTester() {
-  getNextPage();
-  getPreviousPage();
+function getPrevPage() {
+  let page = sessionStorage.getItem('pageNum');
+  page = parseInt(page, 10);
+  if (page > 1) {
+    let searchText = sessionStorage.getItem('searchText'); // Sets 'searchText' to equal the value of whatever is searched
+    let selectVal = sessionStorage.getItem('selectVal');
+    page -= 1;
+    sessionStorage.setItem('pageNum', page);
+    let search = searchText + "&type=" + selectVal + "&page=" + page;
+    getMovies(search); // Calls the function 'getMovies()' with the parameter of whatever is searched
+    $('#activePageNum').html(page);
+  }
 }
