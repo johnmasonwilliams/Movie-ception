@@ -56,6 +56,26 @@ body {
   margin-bottom: 0px !important;
 }
 
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: white;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  color: white;
+  border: 1px solid white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
 @media(min-width:992px){ /* This says, if the screen width of the browser is less than 992 pixels, then change the height of below items to their respective values */
   #movies .col-md-3 .well{
     height: 390px;

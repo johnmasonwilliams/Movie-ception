@@ -66,8 +66,17 @@
     </div>
   </div>
 
+  <br>
+
   <div class="col-md-8 offset-md-2 container">
     <div id="movies" class=" row"></div>
+    <div style="display:none;" id="pageRow" class="row">
+      <div class="col-md-2 offset-md-5 pagination">
+        <a class="btn rounded" onclick="getPrevPage()">&laquo;</a>
+        <a id="activePageNum" class="active">1</a>
+        <a class="btn rounded" onclick="getNextPage()">&raquo;</a>
+      </div>
+    </div>
   </div>
 
   <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
@@ -99,8 +108,5 @@
     firebase.analytics();
   </script>
   <script src="js/firebase.js"></script>
-  <script type="text/javascript">
-     pageTester();
-  </script>
 </body>
 </html>
