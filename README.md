@@ -59,9 +59,7 @@
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
+* [Installation](#installation)
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
@@ -85,13 +83,13 @@
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Installation
 
 To get a copy up and running follow these steps.
 
 - Log into the `ceclnx01` server
 
-- `cd` into your `public_html folder`
+- `cd` into your `public_html` folder
 - Run `wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=16AyqQ-hte2WUzGM6oadPTeCVDbURTJGP' -O get_website.sh`
 - Run the command `chmod 777 ./get_website.sh`
 - Run the command `./get_website.sh`

@@ -3,6 +3,9 @@ let apiKey = 'apikey=ee1abab3'; // This is our API key which you can think of li
 
 $(document).ready(() => { // When the document is ready, do the below function
   $('#searchForm').on('submit', (e) => { // On the form submission, which is just when you search for something
+    $('#activePageNum').html(`1`);
+
+
     let searchText = $('#searchText').val(); // Sets 'searchText' to equal the value of whatever is searched
     sessionStorage.setItem('searchText', $('#searchText').val());
 
@@ -79,6 +82,9 @@ function getMovie() { // This function gets the movie information via the sessio
   axios.get('http://www.omdbapi.com?i='+movieId+"&"+encodeURI(apiKey)) // This is were we can use the movieID we now have to '.get()' the rest of the movie information to display
     .then((response) => { // Same thing as above, once we '.get()', then we run the below code
       let movie = response.data; // We can use 'response' as a variable because it is returned from the '.get()' as a JSON value.
+
+      // TESTER
+      //console.log(`Movie ID: ${movieId}`);
 
       let output =`
         <div class="row">
