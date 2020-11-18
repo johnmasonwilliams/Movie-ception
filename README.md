@@ -58,10 +58,8 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
+  * [Built With](#built-with
+* [Installation](#installation)
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
@@ -85,7 +83,7 @@
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Installation
 
 To get a copy up and running follow these steps.
 
