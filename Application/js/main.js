@@ -3,9 +3,8 @@ let apiKey = 'apikey=ee1abab3'; // This is our API key which you can think of li
 
 $(document).ready(() => { // When the document is ready, do the below function
   $('#searchForm').on('submit', (e) => { // On the form submission, which is just when you search for something
-    $('#activePageNum').html(`1`);
 
-
+    sessionStorage.removeItem('pageNum');
     let searchText = $('#searchText').val(); // Sets 'searchText' to equal the value of whatever is searched
     sessionStorage.setItem('searchText', $('#searchText').val());
 
@@ -15,6 +14,7 @@ $(document).ready(() => { // When the document is ready, do the below function
     let search = searchText + "&type=" + selectVal;
 
     sessionStorage.setItem('pageNum', 1);
+    $('#activePageNum').html(`1`);
     getMovies(search); // Calls the function 'getMovies()' with the parameter of whatever is searched
     e.preventDefault();
     $('#searchText').val('');
