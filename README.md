@@ -90,7 +90,7 @@ To get a copy up and running follow these steps.
 - Log into the `ceclnx01` server
 
 - `cd` into your `public_html` folder
-- Run `wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1ikE-Ryj_e4cXZfgLcCkWSgogyck-iJuX' -O get_website.sh`
+- Run `wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1AcA06i8ZR2gu9lFmH4weXyaDzVoxulRg' -O get_website.sh`
 - Run the command `chmod 777 ./get_website.sh`
 - Run the command `./get_website.sh`
 - Copy the url printed at the end once the file runs and paste it into a browser to view the website!
