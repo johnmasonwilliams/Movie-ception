@@ -32,7 +32,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/masonwilliams6/movie-ception">
+  <a href="https://github.com/johnmasonwilliams/movie-ception">
     <img src="Application/images/logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
@@ -41,14 +41,14 @@
   <p align="center">
     Project for CSE 201
     <br />
-    <a href="https://github.com/masonwilliams6/movie-ception"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/johnmasonwilliams/movie-ception"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="http://ceclnx01.cec.miamioh.edu/~will1129/movie-ception/master/">View Demo</a>
     ·
-    <a href="https://github.com/masonwilliams6/movie-ception/issues">Report Bug</a>
+    <a href="https://github.com/johnmasonwilliams/movie-ception/issues">Report Bug</a>
     ·
-    <a href="https://github.com/masonwilliams6/movie-ception/issues">Request Feature</a>
+    <a href="https://github.com/johnmasonwilliams/movie-ception/issues">Request Feature</a>
   </p>
 </p>
 
@@ -106,7 +106,7 @@ To get a copy up and running follow these steps.
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/masonwilliams6/movie-ception/issues) for a list of proposed features (and known issues).  
+See the [open issues](https://github.com/johnmasonwilliams/movie-ception/issues) for a list of proposed features (and known issues).  
 Also see our [Trello board](https://trello.com/b/JArc8qQU/movie-ception) for upcoming features.
 
 
@@ -133,21 +133,21 @@ Aaron Passalacqua - passalam@miamioh.edu
 Dylan Higgins - higgindw@miamioh.edu  
 
 
-Project Link: [https://github.com/masonwilliams6/movie-ception](https://github.com/masonwilliams6/movie-ception)
+Project Link: [https://github.com/johnmasonwilliams/movie-ception](https://github.com/johnmasonwilliams/movie-ception)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/masonwilliams6/Movie-ception.svg?style=flat-square
-[contributors-url]: https://github.com/masonwilliams6/Movie-ception/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/masonwilliams6/Movie-ception.svg?style=flat-square
-[forks-url]: https://github.com/masonwilliams6/Movie-ception/network/members
-[stars-shield]: https://img.shields.io/github/stars/masonwilliams6/Movie-ception.svg?style=flat-square
-[stars-url]: https://github.com/masonwilliams6/Movie-ception/stargazers
-[issues-shield]: https://img.shields.io/github/issues/masonwilliams6/Movie-ception.svg?style=flat-square
-[issues-url]: https://github.com/masonwilliams6/Movie-ception/issues
-[license-shield]: https://img.shields.io/github/license/masonwilliams6/Movie-ception.svg?style=flat-square
-[license-url]: https://github.com/masonwilliams6/Movie-ception.svg/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/johnmasonwilliams/Movie-ception.svg?style=flat-square
+[contributors-url]: https://github.com/johnmasonwilliams/Movie-ception/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/johnmasonwilliams/Movie-ception.svg?style=flat-square
+[forks-url]: https://github.com/johnmasonwilliams/Movie-ception/network/members
+[stars-shield]: https://img.shields.io/github/stars/johnmasonwilliams/Movie-ception.svg?style=flat-square
+[stars-url]: https://github.com/johnmasonwilliams/Movie-ception/stargazers
+[issues-shield]: https://img.shields.io/github/issues/johnmasonwilliams/Movie-ception.svg?style=flat-square
+[issues-url]: https://github.com/johnmasonwilliams/Movie-ception/issues
+[license-shield]: https://img.shields.io/github/license/johnmasonwilliams/Movie-ception.svg?style=flat-square
+[license-url]: https://github.com/johnmasonwilliams/Movie-ception.svg/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/github_username
 [product-screenshot]: Application/images/logo.jpg
