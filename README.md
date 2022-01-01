@@ -44,7 +44,7 @@
     <a href="https://github.com/johnmasonwilliams/movie-ception"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="http://ceclnx01.cec.miamioh.edu/~will1129/movie-ception/master/">View Demo</a>
+    <a href="https://movie-ception.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/johnmasonwilliams/movie-ception/issues">Report Bug</a>
     ·
@@ -70,7 +70,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](http://ceclnx01.cec.miamioh.edu/~will1129/movie-ception/master/)
+[![Product Name Screen Shot][product-screenshot]](https://movie-ception.vercel.app/)
 
 
 ### Built With
@@ -84,6 +84,8 @@
 
 <!-- GETTING STARTED -->
 ## Installation
+
+For use on Miami University's server
 
 To get a copy up and running follow these steps.
 
